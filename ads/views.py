@@ -46,6 +46,7 @@ class AdListView(ListView):
 class AdCreateView(CreateView):
     model = Ad
     fields = ['name', 'description', 'author', 'price', 'is_published', 'category']
+    
     def post(self, request):
         data = json.loads(request.body)
 
