@@ -1,0 +1,45 @@
+POST http://localhost:8000/ad/create/
+Content-Type: application/json
+
+{
+    "name": "Сибирская котята, 3 месяца",
+    "author_id": 1,
+    "price": 2500,
+    "description": "Продаю сибирских котят, возвраст 3 месяца.\nОчень милые и ручные.\nЛоточек знают на пятерку, кушают премиум корм.\nЖдут любящих и заботливых хояев. Больше фотографий отправлю в личку, цена указана за 1 котенка.",
+    "is_published": true,
+    "image": "images/post1.jpg",
+    "category_id": 1
+}
+
+###
+
+GET http://localhost:8000/ad/
+Accept: application/json
+
+###
+
+GET http://localhost:8000/ad/1
+Accept: application/json
+
+###
+
+DELETE http://localhost:8000/ad/1/delete/
+Accept: application/json
+
+###
+
+PATCH http://localhost:8000/ad/1/update/
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Неопределенно",
+    "author_id": 1,
+    "price": 100500,
+    "description": "😎",
+    "is_published": true,
+    "image": "images/post1.jpg",
+    "category_id": 1
+}
+
+###

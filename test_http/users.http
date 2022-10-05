@@ -1,0 +1,58 @@
+POST http://localhost:8000/user/create/
+Content-Type: application/json
+
+{
+    "first_name": "Павел",
+    "last_name": "Никифоров",
+    "username": "pnikifirov",
+    "password": "gZvptL",
+    "role": "member",
+    "age": 21,
+    "location": [
+        {
+            "name": "Москва, м. Студенческая",
+            "lat": 55.738472,
+            "lng": 37.548188
+        }
+    ]
+}
+
+###
+
+GET http://localhost:8000/user/
+Accept: application/json
+
+###
+
+GET http://localhost:8000/user/1/
+Accept: application/json
+
+###
+
+DELETE http://localhost:8000/user/1/delete/
+Accept: application/json
+
+###
+
+PATCH http://localhost:8000/user/1/update/
+Accept: application/json
+Content-Type: application/json
+
+{
+    "first_name": "Неопределенно",
+    "last_name": "Неопределенно",
+    "username": "pnikifirov",
+    "password": "gZvptL",
+    "role": "member",
+    "age": 21,
+    "location": [
+        {
+            "name": "Новосибирск, м. Студенческая",
+            "lat": 57.738472,
+            "lng": 7.548188
+        }
+]
+}
+
+
+###
