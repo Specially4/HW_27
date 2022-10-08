@@ -5,8 +5,8 @@ from django.db import models
 
 class Location(models.Model):
     name = models.CharField(max_length=100)
-    lat = models.DecimalField(max_digits=10, decimal_places=8)
-    lng = models.DecimalField(max_digits=10, decimal_places=8)
+    lat = models.DecimalField(max_digits=10, decimal_places=8, null=True)
+    lng = models.DecimalField(max_digits=10, decimal_places=8, null=True)
 
     class Meta:
         verbose_name = 'Местоположение'
@@ -21,15 +21,15 @@ class UserRoles:
     ADMIN = 'admin'
     MODERATOR = 'moderator'
     choices = (
-        ('Пользователь', USER),
-        ('Администратор', ADMIN),
-        ('Модератор', MODERATOR)
+        (USER, 'Пользователь'),
+        (ADMIN, 'Администратор'),
+        (MODERATOR, 'Модератор')
     )
 
 
 class User(models.Model):
     first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True, blank=True)
     username = models.CharField(max_length=100, unique=True)
     password = models.CharField(max_length=100)
     role = models.CharField(choices=UserRoles.choices, default='member', max_length=13)
