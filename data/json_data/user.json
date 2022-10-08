@@ -9,7 +9,11 @@
             "password": "gZvptL",
             "role": "member",
             "age": 21,
-            "location_id": 1
+            "location": [{
+                "name": "Москва, м. Студенческая",
+                "lat": 55.738472,
+                "lng": 37.548188
+            }]
         }
     },
     {
@@ -22,7 +26,11 @@
             "password": "4fVqL2",
             "role": "moderator",
             "age": 24,
-            "location_id": 3
+            "location": [{
+                "name": "Санкт-Петербург, м. Невский проспект",
+                "lat": 59.934719,
+                "lng": 30.331599
+            }]
         }
     },
     {
@@ -35,7 +43,11 @@
             "password": "o535pj",
             "role": "admin",
             "age": 29,
-            "location_id": 8
+            "location": [{
+                "name": "Сакнт-Петербург, м. Балтийская",
+                "lat": 59.910822,
+                "lng": 30.327827
+            }]
         }
     },
     {
@@ -48,7 +60,11 @@
             "password": "d49rSO",
             "role": "moderator",
             "age": 19,
-            "location_id": 10
+            "location": [{
+                "name": "Москва, м. Электрозаодская",
+                "lat": 55.781876,
+                "lng": 7.7053216
+            }]
         }
     },
     {
@@ -61,7 +77,11 @@
             "password": "wCqlVE",
             "role": "member",
             "age": 41,
-            "location_id": 2
+            "location": [{
+                "name": "Москва, м. Черкизовская",
+                "lat": 55.804042,
+                "lng": 37.745415
+            }]
         }
     },
     {
@@ -74,7 +94,11 @@
             "password": "xuR2jf",
             "role": "member",
             "age": 37,
-            "location_id": 4
+            "location": [{
+                "name": "Москва, м. Библиотека имени Ленина",
+                "lat": 55.751275,
+                "lng": 37.610953
+            }]
         }
     },
     {
@@ -87,7 +111,11 @@
             "password": "gzP4vR",
             "role": "member",
             "age": 26,
-            "location_id": 7
+            "location": [{
+                "name": "Пушкин, Павловское шоссе 23/2",
+                "lat": 59.707737,
+                "lng": 30.415887
+            }]
         }
     },
     {
@@ -100,7 +128,11 @@
             "password": "zo0rj6",
             "role": "member",
             "age": 24,
-            "location_id": 5
+            "location": [{
+                "name": "Москва, м. Комсомольская",
+                "lat": 55.775256,
+                "lng": 37.655653
+            }]
         }
     },
     {
@@ -113,7 +145,11 @@
             "password": "daMocL",
             "role": "moderator",
             "age": 22,
-            "location_id": 9
+            "location": [{
+                "name": "Москва, м. Беломорская",
+                "lat": 55.865056,
+                "lng": 37.475797
+            }]
         }
     },
     {
@@ -126,7 +162,11 @@
             "password": "sasha123456",
             "role": "member",
             "age": 35,
-            "location_id": 6
+            "location": [{
+                "name": "Санкт-Петербург, м. Чернышевская",
+                "lat": 59.946097,
+                "lng": 30.371087
+            }]
         }
     }
 ]
