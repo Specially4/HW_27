@@ -6,7 +6,7 @@ from ads.models import Ad
 class AdListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ad
-        fields = ['name', 'username', 'price', 'category']
+        fields = ['id', 'name', 'username', 'price', 'category']
 
 
 class AdDetailSerializer(serializers.ModelSerializer):

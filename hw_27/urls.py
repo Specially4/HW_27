@@ -16,17 +16,27 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import SimpleRouter
+from ads.views import CategoriesViewSet
 
-from ads import views
 from hw_27 import settings
+from users.views import LocationViewSet
+
+router = SimpleRouter()
+router.register(r'location', LocationViewSet)
+router.register(r'cat', CategoriesViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.hello),
+    path("api-auth/", include('rest_framework.urls')),
     path('ad/', include('ads.urls.ad_urls')),
-    path('cat/', include('ads.urls.cat_urls')),
     path('user/', include('users.urls')),
 ]
 
+urlpatterns += router.urls
+
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+        )
