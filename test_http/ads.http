@@ -38,7 +38,7 @@ Content-Type: application/json
     "price": 100500,
     "description": "😎",
     "is_published": true,
-    "image": "images/post1.jpg",
+    "image": null,
     "category_id": 1
 }
 
