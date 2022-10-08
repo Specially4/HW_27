@@ -1,4 +1,4 @@
-POST http://localhost:8000/cat/create/
+POST http://localhost:8000/cat/
 Content-Type: application/json
 
 {
@@ -17,12 +17,12 @@ Accept: application/json
 
 ###
 
-DELETE http://localhost:8000/cat/1/delete/
+DELETE http://localhost:8000/cat/1/
 Accept: application/json
 
 ###
 
-PATCH http://localhost:8000/cat/1/update/
+PATCH http://localhost:8000/cat/1/
 Accept: application/json
 Content-Type: application/json
 
