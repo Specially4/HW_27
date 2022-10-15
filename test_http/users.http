@@ -2,12 +2,12 @@ POST http://localhost:8000/user/create/
 Content-Type: application/json
 
 {
-    "first_name": "Павел",
-    "last_name": "Никифоров",
-    "username": "pnikifirov",
-    "password": "gZvptL",
-    "role": "member",
-    "age": 21,
+    "first_name": "Сергей",
+    "last_name": "Котенков",
+    "username": "skotenkov",
+    "password": "Qwer1234",
+    "role": "moderator",
+    "age": 26,
     "location": [
         {
             "name": "Москва, м. Студенческая",
@@ -24,12 +24,22 @@ Accept: application/json
 
 ###
 
+POST http://localhost:8000/user/create/
+Content-Type: application/json
+{
+    "username": "skotenkov",
+    "password": "Qwer1234"
+}
+###
+
 GET http://localhost:8000/user/1/
+Authorization: Bearer ...
+
 Accept: application/json
 
 ###
 
-DELETE http://localhost:8000/user/1/delete/
+DELETE http://localhost:8000/user/3/delete/
 Accept: application/json
 
 ###
@@ -41,8 +51,8 @@ Content-Type: application/json
 {
     "first_name": "Неопределенно",
     "last_name": "Неопределенно",
-    "username": "pnikifirov",
-    "password": "gZvptL",
+    "username": "boby",
+    "password": "Qwer123",
     "role": "member",
     "age": 21,
     "location": [

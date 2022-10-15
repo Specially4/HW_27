@@ -1,10 +1,16 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView
+from rest_framework.generics import (CreateAPIView, DestroyAPIView,
+                                     ListAPIView, RetrieveAPIView,
+                                     UpdateAPIView)
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 
-from users.models import User, Location
+from users.models import Location, User
 from users.serializers.serializers_loc import LocationSerializer
-from users.serializers.serializers_user import UserListSerializer, UserRetrieveSerializer, UserDestroySerializer, \
-    UserCreateSerializer, UserUpdateSerializer
+from users.serializers.serializers_user import (UserCreateSerializer,
+                                                UserDestroySerializer,
+                                                UserListSerializer,
+                                                UserRetrieveSerializer,
+                                                UserUpdateSerializer)
 
 
 class LocationViewSet(ModelViewSet):
@@ -22,16 +28,19 @@ class UserCreateView(CreateAPIView):
     serializer_class = UserCreateSerializer
 
 
-class UserDetailView(RetrieveAPIView):
+class UserRetrieveView(RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserRetrieveSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class UserUpdateView(UpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserUpdateSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class UserDestroyView(DestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserDestroySerializer
+    permission_classes = [IsAuthenticated]

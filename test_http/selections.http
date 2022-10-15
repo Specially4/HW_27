@@ -1,0 +1,30 @@
+POST http://localhost:8000/selection/create/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY1ODEzMTY5LCJpYXQiOjE2NjU4MTI4NjksImp0aSI6ImE2ZmJmODBkNjNjMDQwNjZiNGNhMDIzODYyMDliMzkxIiwidXNlcl9pZCI6MX0.JOrDVX0UzThPX_Nwt2WyG_oING_pqVV4rH1YXaKjmUs
+
+
+{
+	"name": "Подборка 1",
+	"owner": 1,
+	"items": [1]
+}
+
+###
+
+GET http://localhost:8000/selection/
+Accept: application/json
+
+###
+
+GET http://localhost:8000/selection/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY1ODEzMTY5LCJpYXQiOjE2NjU4MTI4NjksImp0aSI6ImE2ZmJmODBkNjNjMDQwNjZiNGNhMDIzODYyMDliMzkxIiwidXNlcl9pZCI6MX0.JOrDVX0UzThPX_Nwt2WyG_oING_pqVV4rH1YXaKjmUs
+
+Accept: application/json
+
+###
+
+DELETE http://localhost:8000/user/1/delete/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY1ODEzMTY5LCJpYXQiOjE2NjU4MTI4NjksImp0aSI6ImE2ZmJmODBkNjNjMDQwNjZiNGNhMDIzODYyMDliMzkxIiwidXNlcl9pZCI6MX0.JOrDVX0UzThPX_Nwt2WyG_oING_pqVV4rH1YXaKjmUs
+
+###

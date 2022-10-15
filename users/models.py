@@ -1,5 +1,4 @@
-from random import choices
-
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
@@ -27,11 +26,7 @@ class UserRoles:
     )
 
 
-class User(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100, null=True, blank=True)
-    username = models.CharField(max_length=100, unique=True)
-    password = models.CharField(max_length=100)
+class User(AbstractUser):
     role = models.CharField(choices=UserRoles.choices, default='member', max_length=13)
     age = models.PositiveIntegerField(null=True, blank=True)
     location = models.ManyToManyField(Location)
@@ -42,4 +37,4 @@ class User(models.Model):
         ordering = ['username']
 
     def __str__(self):
-        return f'Пользователь {self.first_name} {self.last_name}'
+        return self.username

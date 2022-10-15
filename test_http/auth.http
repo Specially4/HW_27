@@ -1,0 +1,20 @@
+POST http://localhost:8000/user/token/
+Content-Type: application/json
+
+{
+    "username": "skotenkov",
+    "password": "Qwer1234"
+}
+
+###
+
+POST http://localhost:8000/user/token/refresh/
+Content-Type: application/json
+
+{
+    "username": "skotenkov",
+    "password": "Qwer1234",
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2NTg5ODc4MCwiaWF0IjoxNjY1ODEyMzgwLCJqdGkiOiJlZGRlYjViYmE0MjA0MjhlYjBhYjBmNGJmN2VmOTNkMiIsInVzZXJfaWQiOjF9.M09MgIym1TFWzOewYq1HMAqO0ukEEcn_o8SPpyuTU58"
+}
+
+###

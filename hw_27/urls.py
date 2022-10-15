@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import SimpleRouter
-from ads.views import CategoriesViewSet
 
+from ads.views import CategoriesViewSet
 from hw_27 import settings
 from users.views import LocationViewSet
 
@@ -31,6 +31,7 @@ urlpatterns = [
     path("api-auth/", include('rest_framework.urls')),
     path('ad/', include('ads.urls.ad_urls')),
     path('user/', include('users.urls')),
+    path('selection/', include('selections.urls')),
 ]
 
 urlpatterns += router.urls

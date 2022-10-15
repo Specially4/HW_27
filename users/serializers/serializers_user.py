@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from users.models import User, Location
+from users.models import Location, User
 
 
 class UserListSerializer(serializers.ModelSerializer):
@@ -13,7 +13,7 @@ class UserListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'age', 'role', 'location']
+        fields = '__all__'
 
 
 class UserRetrieveSerializer(serializers.ModelSerializer):
@@ -43,6 +43,9 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create(**validated_data)
+        
+        user.set_password(validated_data["password"])
+        user.save()
 
         for loc in self._location:
             location, _ = Location.objects.get_or_create(
@@ -56,7 +59,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        exclude = ['password']
+        fields = '__all__'
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):
@@ -69,7 +72,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        exclude = ['password']
+        fields = '__all__'
 
     def is_valid(self, *, raise_exception=False):
         self._location = self.initial_data.pop('location')
@@ -77,6 +80,9 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 
     def save(self, **kwargs):
         user = super().save(**kwargs)
+        if self.initial_data['password']:
+            user.set_password(self.initial_data['password'])
+            user.save()
 
         for loc in self._location:
             location, _ = Location.objects.get_or_create(

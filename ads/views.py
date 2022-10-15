@@ -3,11 +3,16 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import UpdateView
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 
 from ads.models import Ad, Category
-from ads.serializers.serializers_ad import AdCreateSerializer, AdDetailSerializer, \
-    AdListSerializer, AdDestroySerializer
+from ads.premissions import AdChangePermissions
+from ads.serializers.serializers_ad import (AdCreateSerializer,
+                                            AdDestroySerializer,
+                                            AdListSerializer,
+                                            AdRetrieveSerializer,
+                                            AdUpdateSerializer)
 from ads.serializers.serializers_cat import CategorySerializer
 
 
@@ -67,18 +72,19 @@ class AdUploadImageView(UpdateView):
 
 class AdRetrieveView(generics.RetrieveAPIView):
     queryset = Ad.objects.all()
-    serializer_class = AdDetailSerializer
+    serializer_class = AdRetrieveSerializer
 
 
 class AdUpdateView(generics.UpdateAPIView):
     queryset = Ad.objects.all()
-    serializer_class = AdDetailSerializer
+    serializer_class = AdUpdateSerializer
+    permission_classes = [IsAuthenticated, AdChangePermissions]
 
 
-@method_decorator(csrf_exempt, name='dispatch')
 class AdDeleteView(generics.DestroyAPIView):
     queryset = Ad.objects.all()
     serializer_class = AdDestroySerializer
+    permission_classes = [IsAuthenticated, AdChangePermissions]
 
 
 class CategoriesViewSet(ModelViewSet):
