@@ -6,9 +6,9 @@ from users.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    slug = models.CharField(
+    slug = models.SlugField(
         max_length=10,
-        validators=[MinLengthValidator(limit_value=5, message='Длина строки менее 5 символов')]
+        validators=[MinLengthValidator(limit_value=5, message='String length less than 5 characters')]
     )
 
     class Meta:
@@ -27,7 +27,7 @@ class Ad(models.Model):
     name = models.CharField(
         max_length=255,
         null=True,
-        validators=[MinLengthValidator(limit_value=10, message='Длина строки менее 10 символов')]
+        validators=[MinLengthValidator(limit_value=10, message='String length less than 10 characters')]
     )
     author_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ads')
     price = models.PositiveIntegerField(default=0)

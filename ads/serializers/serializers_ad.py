@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from ads.models import Ad
+from ads.validators import IsPublishedValidator
 
 
 class AdListSerializer(serializers.ModelSerializer):
@@ -20,6 +21,9 @@ class AdRetrieveSerializer(serializers.ModelSerializer):
 
 class AdCreateSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
+    is_published = serializers.BooleanField(
+        validators=[IsPublishedValidator(default_value=False, message='Invalid status')]
+    )
 
     class Meta:
         model = Ad

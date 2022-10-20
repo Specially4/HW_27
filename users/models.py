@@ -1,5 +1,8 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator
 from django.db import models
+
+from users.validators import NotInDomainValidator, AgeValidator
 
 
 class Location(models.Model):
@@ -28,8 +31,19 @@ class UserRoles:
 
 class User(AbstractUser):
     role = models.CharField(choices=UserRoles.choices, default='member', max_length=13)
-    age = models.PositiveIntegerField(null=True, blank=True)
-    birth_date = models.DateField()
+    age = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        validators=[MinValueValidator(limit_value=9, message='Allowed age 9 and over')]
+    )
+    birth_date = models.DateField(validators=[AgeValidator(
+        message='Allowed age 9 and over',
+        limit_value=9
+    )])
+    email = models.EmailField(unique=True, validators=[NotInDomainValidator(
+        domains=['rambler.ru'],
+        message='Invalid domain'
+    )])
     location = models.ManyToManyField(Location)
 
     class Meta:
