@@ -35,7 +35,7 @@ class User(AbstractUser):
         validators=[MinValueValidator(limit_value=9, message='Allowed age 9 and over')]
     )
     birth_date = models.DateField(null=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, null=True)
     location = models.ManyToManyField(Location)
 
     class Meta:

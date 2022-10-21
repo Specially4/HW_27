@@ -1,7 +1,7 @@
 import pytest
 
 
-@pytest.fixture
+@pytest.fixture()
 @pytest.mark.django_db
 def my_token(client, django_user_model):
     username = 'jdow'

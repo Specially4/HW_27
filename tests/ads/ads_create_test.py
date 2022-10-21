@@ -2,11 +2,11 @@ import pytest
 
 
 @pytest.mark.django_db
-def test_create_ad(client, my_token):
+def test_create_ad(client, my_token, ad):
     expected_response = {
-        'id': 1,
+        'id': ad.pk+1,
         'name': 'Сибирская котята, 3 месяца',
-        'author_id': 1,
+        'author_id': ad.author_id.pk,
         'price': 2500,
         'description': 'Продаю котят',
         'is_published': False,
@@ -16,7 +16,7 @@ def test_create_ad(client, my_token):
 
     data = {
         'name': 'Сибирская котята, 3 месяца',
-        'author_id': 1,
+        'author_id': ad.author_id.pk,
         'price': 2500,
         'description': 'Продаю котят',
         'is_published': False,

@@ -1,4 +1,5 @@
-from django.core.validators import MinLengthValidator
+from email.policy import default
+from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 
 from users.models import User
@@ -29,9 +30,9 @@ class Ad(models.Model):
         validators=[MinLengthValidator(limit_value=10, message='String length less than 10 characters')]
     )
     author_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ads')
-    price = models.PositiveIntegerField(default=0)
+    price = models.PositiveIntegerField(validators=[MinValueValidator(0)])
     description = models.TextField(null=True, blank=True)
-    is_published = models.BooleanField(choices=IS_PUBLIC)
+    is_published = models.BooleanField(choices=IS_PUBLIC, default=False)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
     category_id = models.ForeignKey(Category, null=True, on_delete=models.CASCADE, related_name='ads')
 
