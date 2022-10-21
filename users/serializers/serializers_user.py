@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from users.models import Location, User
+from users.validators import AgeValidator, NotInDomainValidator
 
 
 class UserListSerializer(serializers.ModelSerializer):
@@ -36,6 +37,14 @@ class UserCreateSerializer(serializers.ModelSerializer):
         queryset=Location.objects.all(),
         slug_field='name'
     )
+    birth_date = serializers.DateField(validators=[AgeValidator(
+        message='Allowed age 9 and over',
+        limit_value=9
+    )])
+    email = serializers.EmailField(validators=[NotInDomainValidator(
+        domains=['rambler.ru'],
+        message='Invalid domain'
+    )])
 
     def is_valid(self, *, raise_exception=False):
         self._location = self.initial_data.pop('location', [])

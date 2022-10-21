@@ -26,13 +26,12 @@ class Ad(models.Model):
     ]
     name = models.CharField(
         max_length=255,
-        null=True,
         validators=[MinLengthValidator(limit_value=10, message='String length less than 10 characters')]
     )
     author_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ads')
     price = models.PositiveIntegerField(default=0)
     description = models.TextField(null=True, blank=True)
-    is_published = models.BooleanField(choices=IS_PUBLIC, default=False)
+    is_published = models.BooleanField(choices=IS_PUBLIC)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
     category_id = models.ForeignKey(Category, null=True, on_delete=models.CASCADE, related_name='ads')
 

@@ -2,7 +2,8 @@ POST http://localhost:8000/cat/
 Content-Type: application/json
 
 {
-    "name": "Котики"
+    "name": "Котики",
+    "slug": "Animal"
 }
 
 ###

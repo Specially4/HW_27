@@ -7,5 +7,5 @@ class IsPublishedValidator:
         self.message = message
 
     def __call__(self, value):
-        if value == self.default_value:
+        if value != self.default_value:
             raise serializers.ValidationError(self.message)
